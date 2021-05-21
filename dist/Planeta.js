@@ -24,41 +24,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.Personajes = void 0;
+exports.Planeta = void 0;
 var typeorm_1 = require("typeorm");
-var Personajes = /** @class */ (function (_super) {
-    __extends(Personajes, _super);
-    function Personajes() {
+var Personaje_1 = require("./Personaje");
+var Planeta = /** @class */ (function (_super) {
+    __extends(Planeta, _super);
+    function Planeta() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Personajes.prototype, "Id");
+    ], Planeta.prototype, "Id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Personajes.prototype, "Nombre");
+    ], Planeta.prototype, "Nombre");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)
-    ], Personajes.prototype, "Estatura");
+    ], Planeta.prototype, "Rotaci\u00F3n");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Date)
-    ], Personajes.prototype, "Nacimiento");
+    ], Planeta.prototype, "Creaci\u00F3n");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Personajes.prototype, "Fotograf\u00EDa");
+    ], Planeta.prototype, "Imagen");
     __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], Personajes.prototype, "Color_de_ojos");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], Personajes.prototype, "Ocupaci\u00F3n");
-    return Personajes;
+        typeorm_1.OneToMany(function () { return Personaje_1.Personaje; }, function (personaje) { return personaje.planeta; }),
+        __metadata("design:type", Array)
+    ], Planeta.prototype, "personajes");
+    Planeta = __decorate([
+        typeorm_1.Entity()
+    ], Planeta);
+    return Planeta;
 }(typeorm_1.BaseEntity));
-exports.Personajes = Personajes;
+exports.Planeta = Planeta;

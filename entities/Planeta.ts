@@ -1,9 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, ManyToMany, 
-    BaseEntity, JoinTable, Column } from "typeorm";
+    BaseEntity, JoinTable, Column, OneToMany } from "typeorm";
 import { Usuarios } from "./Usuarios"
+import { Personaje } from "./Personaje";
 
 
-  export class Planetas extends BaseEntity {
+@Entity()
+  export class Planeta extends BaseEntity {
       @PrimaryGeneratedColumn()
       Id: number
 
@@ -18,5 +20,10 @@ import { Usuarios } from "./Usuarios"
 
       @Column()
       Imagen: string
+
+    
+      @OneToMany(()=> Personaje, personaje=>personaje.planeta)
+      personajes: Personaje[]
   }
 
+  

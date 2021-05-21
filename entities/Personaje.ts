@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, ManyToMany, 
-    BaseEntity, JoinTable, Column } from "typeorm";
+    BaseEntity, JoinTable, Column, ManyToOne } from "typeorm";
 import { Usuarios } from "./Usuarios"
+import { Planeta } from "./Planeta";
 
-
-  export class Personajes extends BaseEntity {
+@Entity()
+  export class Personaje extends BaseEntity {
       @PrimaryGeneratedColumn()
       Id: number
 
@@ -24,4 +25,8 @@ import { Usuarios } from "./Usuarios"
 
       @Column()
       Ocupación: string
+
+      
+     @ManyToOne(()=> Planeta, planeta=>planeta.personajes)
+      planeta: Planeta
   }
